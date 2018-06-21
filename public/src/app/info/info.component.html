@@ -1,0 +1,6 @@
+<p>
+  {{cakeToShow.bakerName}}
+  <img [src]="cakeToShow.image" height="200" width="250">
+  <br>
+  <h4>Ratings :</h4>
+  <p *ngFor='let info of cakeToShow.rating'>Comment : {{info.comment}}, Stars : {{info.stars}}</p>

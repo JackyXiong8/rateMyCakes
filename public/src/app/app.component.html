@@ -1,0 +1,47 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    <h2>Rate my cakes</h2>
+
+
+    <div class="creation">
+      <form (submit)='newCakeSubmit()'>
+        <p>Submit a cake to be rated</p>
+        <hr>
+        <P>Baker Name: </P><br>
+        <input type="text" name="newCake.bakerName" [(ngModel)]="newCake.bakerName">
+        <p>Image url:</p><br>
+        <input type="text" name="newCake.url" [(ngModel)]="newCake.url" >
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+  <br>
+  
+    <div class="comments" *ngFor='let cake of totalCakes'>
+      <p>{{cake.bakerName}}</p>
+      <button (click)='showCake(cake)'><img [src]="cake.image" height="200" width="250"></button>
+
+      <form (submit)='newCommentSubmit(cake._id, form)' #form='ngForm'>
+        <p>Stars : <select name="stars" ngModel>
+          <option value="1">One Star</option>
+          <option value="2">Two Stars</option>
+          <option value="3">Three Stars</option>
+          <option value="4">Four Stars</option>
+          <option value="5">Five Stars!!!!</option>
+        </select> </p>
+        <input type="text" name="comment" placeholder="Put your comment here" ngModel >
+        <input type="submit" value="Rate!">
+      </form>
+    </div>
+    
+
+    <br>
+    <div class="moreInfo" *ngIf='shownCake'>
+      <app-info [cakeToShow]='shownCake'></app-info>
+    </div>
+
+  </body>
+</html>
